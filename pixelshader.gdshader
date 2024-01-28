@@ -27,17 +27,14 @@ float get_hue(vec4 color) {
 	return hue;
 }
 
-void fragment() {
-	vec4 current_texture = texture(TEXTURE, UV);
-	float red = clamp(current_texture.r, min_value, max_value);
-	float green = clamp(current_texture.g, min_value, max_value);
-	float blue = clamp(current_texture.b, min_value, max_value);
-	COLOR = vec4(red, green, blue,1);
+vec4 in_range(vec4 color) {
+	float val = get_hue(color);
+	if(min_value <= val && val <= max_value)
+		return vec4(1,1,1,1);
+	return vec4(0,0,0,1);
 }
 
-
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
+void fragment() {
+	vec4 current_texture = texture(TEXTURE, UV);
+ 	COLOR = in_range(current_texture);
+}

@@ -5,8 +5,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e8vg4"]
 shader = ExtResource("1_ylplj")
-shader_parameter/min_value = 0.5
-shader_parameter/max_value = 0.8
+shader_parameter/min_value = 0.1
+shader_parameter/max_value = 0.6
 
 [node name="Node2D" type="Node2D"]
 
